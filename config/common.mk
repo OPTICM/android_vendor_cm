@@ -71,7 +71,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dataroaming=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1
+    ro.build.selinux=1 \
+    persist.sys.root_access=1
 
 ifneq ($(TARGET_BUILD_VARIANT),eng)
 # Enable ADB authentication
@@ -252,5 +253,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
   ro.modversion=$(CM_VERSION)
 
-
+-include vendor/cm/sepolicy/sepolicy.mk
 -include $(WORKSPACE)/hudson/image-auto-bits.mk
