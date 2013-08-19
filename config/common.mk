@@ -251,7 +251,10 @@ endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
-  ro.modversion=$(CM_VERSION)
+  ro.modversion=$(CM_VERSION) \
+  ro.goo.developerid=thddude \
+  ro.goo.rom=Hellybean-4.3-Linaro \
+  ro.goo.version=$(shell date -u +%Y%m%d)
 
 -include vendor/cm/sepolicy/sepolicy.mk
 -include $(WORKSPACE)/hudson/image-auto-bits.mk
