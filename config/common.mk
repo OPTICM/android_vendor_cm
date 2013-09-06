@@ -255,11 +255,11 @@ ifdef CM_BUILDTYPE
     endif
 else
     # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := UNOFFICIAL
+    CM_BUILDTYPE := Linaro
     CM_EXTRAVERSION :=
 endif
 
-    CM_VERSION := Hellybean-$(shell date -u +%Y%m%d)-$(CM_BUILD)$(CM_EXTRAVERSION)
+    CM_VERSION := Hellybean-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
