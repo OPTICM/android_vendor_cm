@@ -175,7 +175,6 @@ PRODUCT_PACKAGES += \
     audio_effects.conf \
     HBWallpapers \
     Apollo \
-    CMUpdater \
     CMFileManager \
     LockClock \
     CMAccount
