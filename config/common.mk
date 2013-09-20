@@ -166,6 +166,7 @@ PRODUCT_PACKAGES += \
     SoundRecorder \
     Basic \
     FastBoot \
+    HALO \
     RestoreAirplaneMode
 
 # Custom CM packages
