@@ -156,6 +156,7 @@ PRODUCT_PACKAGES += \
     LatinIME \
     HALO \
     Superuser \
+    BluetoothExt \	
     su
 
 # Optional CM packages
