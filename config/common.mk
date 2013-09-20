@@ -152,12 +152,12 @@ include vendor/cm/config/themes_common.mk
 # Required CM packages
 PRODUCT_PACKAGES += \
     Development \
-	Focal \ 	
+    Focal \ 	
     LatinIME \
     HALO \
     Superuser \
     BluetoothExt \
-	su
+    su
 
 # Optional CM packages
 PRODUCT_PACKAGES += \
