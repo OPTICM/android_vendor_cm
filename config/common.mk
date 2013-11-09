@@ -1,6 +1,5 @@
 PRODUCT_BRAND ?= cyanogenmod
 
--include vendor/cm-priv/keys.mk
 SUPERUSER_EMBEDDED := true
 SUPERUSER_PACKAGE_PREFIX := com.android.settings.cyanogenmod.superuser
 
@@ -72,10 +71,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
-# Disable excessive dalvik debug messages
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.debug.alloc=0
-
 ifneq ($(TARGET_BUILD_VARIANT),eng)
 # Enable ADB authentication
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
@@ -139,10 +134,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cm/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
-# Don't export PS1 in /system/etc/mkshrc.
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/mkshrc:system/etc/mkshrc
-
 # T-Mobile theme engine
 include vendor/cm/config/themes_common.mk
 
@@ -160,8 +151,10 @@ PRODUCT_PACKAGES += \
     Basic
 
 # Custom CM packages
+    #Trebuchet \
+
 PRODUCT_PACKAGES += \
-    Trebuchet \
+    Launcher3 \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
@@ -230,8 +223,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES +=  \
     vendor/cm/proprietary/Term.apk:system/app/Term.apk \
     vendor/cm/prebuilt/GooManager.apk:system/app/GooManager.apk \
-    vendor/cm/xposed/XposedAppSetting.apk:system/app/XposedAppSetting.apk \
-    vendor/cm/xposed/XposedInstaller.apk:system/app/XposedInstaller.apk \
     vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -251,9 +242,8 @@ endif
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
-
-PRODUCT_VERSION_MAJOR = cm-10
-PRODUCT_VERSION_MINOR = 2
+PRODUCT_VERSION_MAJOR = 11
+PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE = 0-RC0
 
 
@@ -313,8 +303,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
   ro.modversion=$(CM_VERSION)
   ro.goo.developerid=thddude \
-  ro.goo.rom=Hellybean-4.3-Linaro \
+  ro.goo.rom=CM11-Linaro \
   ro.goo.version=$(shell date -u +%Y%m%d)
 
--include vendor/cm/sepolicy/sepolicy.mk
+-include vendor/cm-priv/keys/keys.mk
+
 -include $(WORKSPACE)/hudson/image-auto-bits.mk
