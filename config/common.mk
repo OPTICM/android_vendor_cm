@@ -281,7 +281,7 @@ endif
 
 ifeq ($(CM_BUILDTYPE), UNOFFICIAL)
     ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        CM_EXTRAVERSION := "-$(TARGET_UNOFFICIAL_BUILD_ID)"
+        CM_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
     endif
 endif
 
@@ -308,7 +308,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.modversion=$(CM_VERSION) \
   ro.goo.developerid=thddude \
   ro.goo.rom=CM11-Linaro \
-  ro.goo.version=$(shell date -u +%Y%m%d)
+  ro.goo.version=$(shell date -u +%Y%m%d) \
+  ro.cmlegal.url=http://www.cyanogenmod.org/docs/privacy
 
 -include vendor/cm-priv/keys/keys.mk
 
