@@ -85,12 +85,6 @@ PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
     vendor/cm/prebuilt/common/bin/sysinit:system/bin/sysinit
 
-# Diablo Kernel support
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.d/00_setpermissions:system/etc/init.d/00_setpermissions \
-    vendor/cm/prebuilt/common/etc/init.d/01_inq:system/etc/init.d/01_inq \
-    vendor/cm/prebuilt/common/etc/init.d/02_cache:system/etc/init.d/02_cache 
-
 # userinit support
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
@@ -267,7 +261,7 @@ endif
 endif
 else
 # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := Linaro
+    CM_BUILDTYPE := LINARO
     CM_EXTRAVERSION :=
 endif
 
@@ -298,8 +292,8 @@ endif
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
   ro.modversion=$(CM_VERSION) \
-  ro.goo.developerid=thddude \
-  ro.goo.rom=CM11-Linaro \
+  ro.goo.developerid=Cl3Kener \
+  ro.goo.rom=CM11-LINARO \
   ro.goo.version=$(shell date -u +%Y%m%d) \
   ro.cmlegal.url=http://www.cyanogenmod.org/docs/privacy
 
