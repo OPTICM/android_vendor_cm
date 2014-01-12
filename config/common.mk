@@ -165,7 +165,7 @@ PRODUCT_PACKAGES += \
     libemoji
 
 # Custom CM packages
-    Trebuchet \
+    Trebuchet
 
 PRODUCT_PACKAGES += \
     DSPManager \
