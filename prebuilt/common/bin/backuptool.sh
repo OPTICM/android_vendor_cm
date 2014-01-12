@@ -5,7 +5,7 @@
 
 export C=/tmp/backupdir
 export S=/system
-export V=Hellkat
+export V=11
 
 persist_props="ro.sf.lcd_density"
 sysroot="/system"
