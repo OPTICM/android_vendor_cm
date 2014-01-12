@@ -58,8 +58,6 @@ check_whitelist() {
   return $found
 }
 
-mkdir -p $saveroot
-
 # Execute /system/addon.d/*.sh scripts with $1 parameter
 run_stage() {
 for script in $(find /tmp/addon.d/ -name '*.sh' |sort -n); do
@@ -69,7 +67,6 @@ done
 
 case "$1" in
   backup)
-    save_props
     mkdir -p $C
     if check_prereq; then
         if check_whitelist system; then
@@ -83,7 +80,6 @@ case "$1" in
     run_stage post-backup
   ;;
   restore)
-    restore_props
     if check_prereq; then
         if check_whitelist tmp; then
             exit 127
