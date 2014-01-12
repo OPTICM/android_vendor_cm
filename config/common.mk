@@ -164,10 +164,8 @@ PRODUCT_PACKAGES += \
     Basic \
     libemoji
 
-# Custom CM packages
-    Trebuchet
-
 PRODUCT_PACKAGES += \
+    Trebuchet \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
