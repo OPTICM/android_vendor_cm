@@ -8,9 +8,9 @@ ifneq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
 TARGET_BOOTANIMATION_SIZE := $(shell \
   if [ $(TARGET_SCREEN_WIDTH) -lt $(TARGET_SCREEN_HEIGHT) ]; then \
     echo $(TARGET_SCREEN_WIDTH); \
-else \
-echo $(TARGET_SCREEN_HEIGHT); \
-fi )
+  else \
+    echo $(TARGET_SCREEN_HEIGHT); \
+  fi )
 
 # get a sorted list of the sizes
 bootanimation_sizes := $(subst .zip,, $(shell ls vendor/cm/prebuilt/common/bootanimation))
@@ -20,7 +20,7 @@ bootanimation_sizes := $(shell echo -e $(subst $(space),'\n',$(bootanimation_siz
 define check_and_set_bootanimation
 $(eval TARGET_BOOTANIMATION_NAME := $(shell \
   if [ -z "$(TARGET_BOOTANIMATION_NAME)" ]; then
-if [ $(1) -le $(TARGET_BOOTANIMATION_SIZE) ]; then \
+    if [ $(1) -le $(TARGET_BOOTANIMATION_SIZE) ]; then \
       echo $(1); \
       exit 0; \
     fi;
@@ -98,7 +98,7 @@ PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/init.local.rc:root/init.cm.rc
 
 # Bring in camera effects
-PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES +=  \
     vendor/cm/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
     vendor/cm/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
 
@@ -218,19 +218,19 @@ endif
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
+
 PRODUCT_VERSION_MAJOR = 11
 PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE = 0-RC0
 
-
 # Set CM_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
 
 ifndef CM_BUILDTYPE
-ifdef RELEASE_TYPE
-# Starting with "CM_" is optional
+    ifdef RELEASE_TYPE
+        # Starting with "CM_" is optional
         RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^CM_||g')
         CM_BUILDTYPE := $(RELEASE_TYPE)
-endif
+    endif
 endif
 
 # Filter out random types, so it'll reset to UNOFFICIAL
@@ -239,28 +239,28 @@ ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(CM_BUILDTYPE)),)
 endif
 
 ifdef CM_BUILDTYPE
-ifneq ($(CM_BUILDTYPE), SNAPSHOT)
-ifdef CM_EXTRAVERSION
-# Force build type to EXPERIMENTAL
+    ifneq ($(CM_BUILDTYPE), SNAPSHOT)
+        ifdef CM_EXTRAVERSION
+            # Force build type to EXPERIMENTAL
             CM_BUILDTYPE := EXPERIMENTAL
-# Remove leading dash from CM_EXTRAVERSION
+            # Remove leading dash from CM_EXTRAVERSION
             CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
-# Add leading dash to CM_EXTRAVERSION
+            # Add leading dash to CM_EXTRAVERSION
             CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
-endif
-else
-ifndef CM_EXTRAVERSION
-# Force build type to EXPERIMENTAL, SNAPSHOT mandates a tag
+        endif
+    else
+        ifndef CM_EXTRAVERSION
+            # Force build type to EXPERIMENTAL, SNAPSHOT mandates a tag
             CM_BUILDTYPE := EXPERIMENTAL
-else
-# Remove leading dash from CM_EXTRAVERSION
+        else
+            # Remove leading dash from CM_EXTRAVERSION
             CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
-# Add leading dash to CM_EXTRAVERSION
+            # Add leading dash to CM_EXTRAVERSION
             CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
-endif
-endif
+        endif
+    endif
 else
-# If CM_BUILDTYPE is not defined, set to UNOFFICIAL
+    # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
     CM_BUILDTYPE := LINARO
     CM_EXTRAVERSION :=
 endif
@@ -282,18 +282,18 @@ ifeq ($(CM_BUILDTYPE), RELEASE)
         endif
     endif
 else
-ifeq ($(PRODUCT_VERSION_MINOR),0)
+    ifeq ($(PRODUCT_VERSION_MINOR),0)
         CM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)$(CM_EXTRAVERSION)-$(CM_BUILD)
-else
+    else
         CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)$(CM_EXTRAVERSION)-$(CM_BUILD)
-endif
+    endif
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
   ro.modversion=$(CM_VERSION) \
   ro.goo.developerid=Cl3Kener \
-  ro.goo.rom=CM11-LINARO \
+  ro.goo.rom=BlueLightning \
   ro.goo.version=$(shell date -u +%Y%m%d) \
   ro.cmlegal.url=http://www.cyanogenmod.org/docs/privacy
 
