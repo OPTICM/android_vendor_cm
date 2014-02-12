@@ -123,7 +123,7 @@ then
         fi
         if [ "$CERT" = "PRESIGNED" ];
         then
-            echo -e $CL_RED"$NAME is presigned, skipping"$CL_RST
+            echo -e $CL_GRN"$NAME is presigned, skipping"$CL_RST
             exit 1;
         fi
     fi
