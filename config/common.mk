@@ -76,7 +76,8 @@ endif
 
 # Copy over the changelog to the device
 PRODUCT_COPY_FILES += \
-    vendor/cm/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
+    vendor/cm/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt \
+    vendor/cm/prebuilt/GooManager.apk:system/app/GooManager.apk
 
 # Backup Tool
 ifneq ($(WITH_GMS),true)
@@ -294,7 +295,7 @@ ifdef CM_BUILDTYPE
     endif
 else
     # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := LINARO
+    CM_BUILDTYPE := SaberMod
     CM_EXTRAVERSION :=
 endif
 
