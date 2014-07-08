@@ -77,7 +77,7 @@ endif
 # Copy over the changelog to the device
 PRODUCT_COPY_FILES += \
     vendor/cm/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt \
-    vendor/cm/prebuilt/GooManager.apk:system/app/GooManager.apk
+    vendor/cm/prebuilt/Calendar.apk:system/app/Calendar.apk
 
 # Backup Tool
 ifneq ($(WITH_GMS),true)
