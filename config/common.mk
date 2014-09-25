@@ -171,7 +171,6 @@ PRODUCT_PACKAGES += \
     nano \
     htop \
     powertop \
-    lsof \
     mount.exfat \
     fsck.exfat \
     mkfs.exfat \
@@ -215,11 +214,6 @@ PRODUCT_PACKAGES += \
     procrank \
     Superuser \
     su
-
-# Terminal Emulator
-PRODUCT_COPY_FILES +=  \
-    vendor/cm/proprietary/Term.apk:system/app/Term.apk \
-    vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=1
