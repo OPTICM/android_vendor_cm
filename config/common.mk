@@ -147,11 +147,9 @@ PRODUCT_PACKAGES += \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
-    CMWallpapers \
     Apollo \
     CMFileManager \
     LockClock \
-    CMUpdater \
     CMAccount \
     CMHome
 
@@ -221,7 +219,6 @@ else
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=0
-
 endif
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
