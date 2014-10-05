@@ -63,8 +63,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dateformat=MM-dd-yyyy \
     ro.com.android.dataroaming=false
 
+# properties
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1
+    ro.build.selinux=1 \
+    persist.sys.root_access=3
 
 # Disable multithreaded dexopt by default
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -72,11 +74,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Thank you, please drive thru!
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.dun.override=0
-
-ifneq ($(TARGET_BUILD_VARIANT),eng)
-# Enable ADB authentication
-ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
-endif
 
 # Copy over the changelog to the device
 PRODUCT_COPY_FILES += \
